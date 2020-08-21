@@ -16,12 +16,12 @@ public class InputOutputGameDto {
         return scanner.nextInt();
     }
 
-    public void outputErrorInfo(){
+    public void outputErrorInfo() {
         System.out.println("Некорректное количество спичек.");
     }
 
-    public void outputGameInfo(GameStatus gameStatus, int numberMatchesOnTable){
-        switch (gameStatus){
+    public void outputGameInfo(GameStatus gameStatus, int numberMatchesOnTable) {
+        switch (gameStatus) {
             case GAME_BEGIN:
                 System.out.println("Начало игры. На столе " + numberMatchesOnTable + " спичек.");
                 break;
@@ -35,7 +35,7 @@ public class InputOutputGameDto {
 
     }
 
-    public void outputComputerMoveInfo(int matchesComputerTook){
+    public void outputComputerMoveInfo(int matchesComputerTook) {
         System.out.println("- Количество выбранных компьютером спичек = " + matchesComputerTook + ".");
     }
 

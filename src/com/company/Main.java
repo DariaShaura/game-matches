@@ -1,8 +1,12 @@
 package com.company;
 
+import com.company.service.GameService;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        GameService gameService = new GameService();
+
+        gameService.play();
     }
 }

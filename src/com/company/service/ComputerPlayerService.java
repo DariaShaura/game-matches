@@ -15,16 +15,13 @@ public class ComputerPlayerService {
 
         int matchesOnTable = gameInfo.getNumberMatchesOnTable();
 
-        if(matchesOnTable == 20){
+        if (matchesOnTable == 20) {
             return NUMBER_MATCHES_ON_FIRST_MOVE;
-        }
-        else if(((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) >= 1) && ((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) <= 3)){
+        } else if (((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) >= 1) && ((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) <= 3)) {
             return matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END;
-        }
-        else if((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) < 0){
+        } else if ((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) < 0) {
             return matchesOnTable - 1;
-        }
-        else{
+        } else {
             return SUM_MATCHES_USER_COMPUTER - gameInfo.getNumberMatchesOnLastStep();
         }
 
