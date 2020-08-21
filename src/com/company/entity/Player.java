@@ -1,4 +1,4 @@
 package com.company.entity;
 
-public enum Player {
+public enum Player { COMPUTER, USER
 }
