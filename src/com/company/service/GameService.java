@@ -35,14 +35,20 @@ public class GameService {
 
         inputOutputGameDto.outputGameInfo(gameInfo.getGameStatus(), gameInfo.getNumberMatchesOnTable());
 
-        // ход компьютера
-        // изменение состояния игры,вывод информации
-        Player currentPlayer = Player.COMPUTER;
-        changeGameInfo(computerPlayerService.makeMove(gameInfo), currentPlayer);
-        inputOutputGameDto.outputComputerMoveInfo(gameInfo.getNumberMatchesOnLastStep());
-        inputOutputGameDto.outputGameInfo(gameInfo.getGameStatus(), gameInfo.getNumberMatchesOnTable());
+        Player currentPlayer;
 
-        while (gameInfo.getGameStatus() == GameStatus.GAME_ON) {
+        while ((gameInfo.getGameStatus() == GameStatus.GAME_BEGIN) || (gameInfo.getGameStatus() == GameStatus.GAME_ON)) {
+            // ход компьютера
+            // изменение состояния игры,вывод информации
+            currentPlayer = Player.COMPUTER;
+            changeGameInfo(computerPlayerService.makeMove(gameInfo), currentPlayer);
+            inputOutputGameDto.outputComputerMoveInfo(gameInfo.getNumberMatchesOnLastStep());
+            inputOutputGameDto.outputGameInfo(gameInfo.getGameStatus(), gameInfo.getNumberMatchesOnTable());
+
+            if(gameInfo.getGameStatus() == GameStatus.GAME_OVER){
+                break;
+            }
+
             // ход человека
             // изменение состояния игры,вывод информации
             matchesUserTook = inputOutputGameDto.inputUserMoveInfo();
@@ -54,15 +60,7 @@ public class GameService {
             currentPlayer = Player.USER;
             changeGameInfo(matchesUserTook, currentPlayer);
             inputOutputGameDto.outputGameInfo(gameInfo.getGameStatus(), gameInfo.getNumberMatchesOnTable());
-
-            // ход компьютера
-            // изменение состояния игры,вывод информации
-            currentPlayer = Player.COMPUTER;
-            changeGameInfo(computerPlayerService.makeMove(gameInfo), currentPlayer);
-            inputOutputGameDto.outputComputerMoveInfo(gameInfo.getNumberMatchesOnLastStep());
-            inputOutputGameDto.outputGameInfo(gameInfo.getGameStatus(), gameInfo.getNumberMatchesOnTable());
         }
-        // вывод
 
     }
 }

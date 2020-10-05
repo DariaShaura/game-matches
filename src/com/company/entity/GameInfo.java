@@ -1,18 +1,17 @@
 package com.company.entity;
 
 public class GameInfo {
-    public static final int NUMBER_MATCHES = 20;
     public static final int MAX_MATCHES_ON_STEP = 3;
     public static final int MIN_MATCHES_ON_STEP = 1;
 
-    private int numberMatchesOnTable = NUMBER_MATCHES;
+    private int numberMatchesOnTable;
     private int numberMatchesOnLastStep;
     private int moveNumber;
     private Player currentPlayer = Player.COMPUTER;
-    private GameStatus gameStatus;
+    private GameStatus gameStatus = GameStatus.GAME_BEGIN;
 
     public GameInfo() {
-        gameStatus = GameStatus.GAME_BEGIN;
+        numberMatchesOnTable = 30;
     }
 
     public int getNumberMatchesOnTable() {

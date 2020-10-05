@@ -1,6 +1,7 @@
 package com.company.service;
 
 import com.company.entity.GameInfo;
+import com.company.entity.GameStatus;
 
 public class ComputerPlayerService {
 
@@ -15,7 +16,7 @@ public class ComputerPlayerService {
 
         int matchesOnTable = gameInfo.getNumberMatchesOnTable();
 
-        if (matchesOnTable == 20) {
+        if (gameInfo.getGameStatus() == GameStatus.GAME_BEGIN) {
             return NUMBER_MATCHES_ON_FIRST_MOVE;
         } else if (((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) >= 1) && ((matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END) <= 3)) {
             return matchesOnTable - NEED_NUMBER_MATCHES_AT_THE_END;
